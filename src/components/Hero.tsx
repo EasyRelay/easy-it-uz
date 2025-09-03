@@ -2,7 +2,7 @@ import { ArrowRight, Code, Zap, Shield } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br bg-no-repeat from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden animate-gradientReveal bg-[length:200%_200%]">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -25,7 +25,7 @@ const Hero = () => {
                 We provide cutting-edge IT services, web development, automation, and comprehensive support to help your business thrive in the digital age.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transform hover:scale-105">
                 Get Started
