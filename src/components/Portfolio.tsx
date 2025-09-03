@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { ExternalLink, Github, Eye } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("personal");
 
-  const personalProjects = [
+  const personalProjects2 = [
     { id: 1, title: "E-Commerce Platform", description: "Modern online store with advanced features", image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "Node.js", "MongoDB"], liveUrl: "#", githubUrl: "#" },
     { id: 2, title: "Task Management App", description: "Collaborative project management solution", image: "https://images.pexels.com/photos/7688374/pexels-photo-7688374.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Vue.js", "Express", "PostgreSQL"], liveUrl: "#", githubUrl: "#" },
     { id: 3, title: "AI Chat Bot", description: "Intelligent customer service automation", image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Python", "TensorFlow", "Telegram API"], liveUrl: "#", githubUrl: "#" },
     { id: 4, title: "Real Estate Platform", description: "Property listing and management system", image: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Next.js", "Prisma", "Supabase"], liveUrl: "#", githubUrl: "#" }
   ];
+
+  const personalProjects = [
+    {id: 1, title: "A to Z Freight solution LLC", description: "Your trusted partner in smart logistics.", image: "/images/atoz.png", tech: ["TypeScript", "Vite", "React"], liveUrl: "https://azfreightllc.com/", githubUrl: "https://github.com/EasyRelay/a-to-z"},
+    {id: 2, title: "Thomas a Huneycutt Trucking Inc", description: "Professional freight services with reliable drivers and cutting-edge fleet monitoring. Your cargo, our commitment.", image: "/images/thomas-huneycutt.png", tech: ["TypeScript", "React", "Telegram API"], liveUrl: "https://thomasohio.com/", githubUrl: "https://github.com/EasyRelay/thomas-a-huneycutt"}
+
+  ]
 
   const publicProjects = [
     { id: 5, title: "Open Source UI Library", description: "Component library for React applications", image: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "TypeScript", "Storybook"], liveUrl: "#", githubUrl: "#" },
@@ -79,12 +85,12 @@ const Portfolio = () => {
                     >
                       <Eye className="w-5 h-5 text-white" />
                     </button>
-                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    <Link to={project.liveUrl? project.liveUrl : ""} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
                       <ExternalLink className="w-5 h-5 text-white" />
-                    </a>
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    </Link>
+                    <Link to={project.githubUrl? project.liveUrl : ""} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
                       <Github className="w-5 h-5 text-white" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

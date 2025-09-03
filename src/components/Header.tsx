@@ -59,18 +59,6 @@ const Header = () => {
               </a>
             </div>)}
         </div>
-
-        {useLocation().pathname === '/' && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-fade-in">
-            <nav className="py-4">
-              <div className="px-6 py-3">
-                <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-xl font-semibold">
-                  Get Started
-                </button>
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
