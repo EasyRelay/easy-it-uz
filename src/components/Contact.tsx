@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -158,12 +159,12 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900">{info.title}</h4>
-                        <a
-                          href={info.link}
+                        <Link
+                          to={info.link}
                           className="text-blue-600 hover:text-purple-600 transition-colors"
                         >
                           {info.value}
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   );
@@ -277,10 +278,10 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 ${status? "" : 'disabled'}`}
+                className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 ${status ? "" : 'disabled'}`}
               >
                 <Send className="w-5 h-5" />
-                {status? "Sending..." : "Send Message"}
+                {status ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,14 +30,14 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div>
-              <img src='/logos/logo.png' rel='header-logo' className="w-36 h-12 text-white bg-white rounded-lg shadow-lg" />
+            <div className='flex justify-center items-center rounded-lg bg-gradient-to-r w-[140px] h-14 from-purple-600 to-blue-500 active:scale-105'>
+              <img src='/logos/logo.png' rel='header-logo' onClick={() => {navigate("/")}} className="w-32 h-12 text-white active:scale-90 bg-white rounded-lg shadow-lg" />
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {menuItems.map((item, index) => (
+            {useLocation().pathname === '/' && menuItems.map((item, index) => (
               <a
                 key={index}
                 href={item.href}
@@ -49,47 +49,23 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-              href='#contact'
-            >
-              Get Started
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'
-              }`}
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {useLocation().pathname === '/' && (
+            <div className="hidden md:block">
+              <a
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                href='#contact'
+              >
+                Get Started
+              </a>
+            </div>)}
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
+        {useLocation().pathname === '/' && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-fade-in">
             <nav className="py-4">
-              {menuItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                >
-                  {item.name}
-                </a>
-              ))}
               <div className="px-6 py-3">
                 <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-xl font-semibold">
-                  Get Quote
+                  Get Started
                 </button>
               </div>
             </nav>

@@ -1,79 +1,25 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { useState } from "react";
+import { ExternalLink, Github, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
-  const [activeTab, setActiveTab] = useState('personal');
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("personal");
 
   const personalProjects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Modern online store with advanced features',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      description: 'Collaborative project management solution',
-      image: 'https://images.pexels.com/photos/7688374/pexels-photo-7688374.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Vue.js', 'Express', 'PostgreSQL'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 3,
-      title: 'AI Chat Bot',
-      description: 'Intelligent customer service automation',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Python', 'TensorFlow', 'Telegram API'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 4,
-      title: 'Real Estate Platform',
-      description: 'Property listing and management system',
-      image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Next.js', 'Prisma', 'Supabase'],
-      liveUrl: '#',
-      githubUrl: '#'
-    }
+    { id: 1, title: "E-Commerce Platform", description: "Modern online store with advanced features", image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "Node.js", "MongoDB"], liveUrl: "#", githubUrl: "#" },
+    { id: 2, title: "Task Management App", description: "Collaborative project management solution", image: "https://images.pexels.com/photos/7688374/pexels-photo-7688374.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Vue.js", "Express", "PostgreSQL"], liveUrl: "#", githubUrl: "#" },
+    { id: 3, title: "AI Chat Bot", description: "Intelligent customer service automation", image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Python", "TensorFlow", "Telegram API"], liveUrl: "#", githubUrl: "#" },
+    { id: 4, title: "Real Estate Platform", description: "Property listing and management system", image: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Next.js", "Prisma", "Supabase"], liveUrl: "#", githubUrl: "#" }
   ];
 
   const publicProjects = [
-    {
-      id: 1,
-      title: 'Open Source UI Library',
-      description: 'Component library for React applications',
-      image: 'https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'TypeScript', 'Storybook'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 2,
-      title: 'Developer Portfolio Template',
-      description: 'Free portfolio template for developers',
-      image: 'https://images.pexels.com/photos/196655/pexels-photo-196655.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Gatsby', 'GraphQL', 'Netlify'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 3,
-      title: 'API Documentation Tool',
-      description: 'Tool for generating beautiful API docs',
-      image: 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Node.js', 'Express', 'Swagger'],
-      liveUrl: '#',
-      githubUrl: '#'
-    }
+    { id: 5, title: "Open Source UI Library", description: "Component library for React applications", image: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "TypeScript", "Storybook"], liveUrl: "#", githubUrl: "#" },
+    { id: 6, title: "Developer Portfolio Template", description: "Free portfolio template for developers", image: "https://images.pexels.com/photos/196655/pexels-photo-196655.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Gatsby", "GraphQL", "Netlify"], liveUrl: "#", githubUrl: "#" },
+    { id: 7, title: "API Documentation Tool", description: "Tool for generating beautiful API docs", image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Node.js", "Express", "Swagger"], liveUrl: "#", githubUrl: "#" }
   ];
 
-  const currentProjects = activeTab === 'personal' ? personalProjects : publicProjects;
+  const currentProjects = activeTab === "personal" ? personalProjects : publicProjects;
 
   return (
     <section className="py-20 bg-gray-50">
@@ -89,21 +35,21 @@ const Portfolio = () => {
         <div className="flex justify-center mb-12">
           <div className="bg-white rounded-xl p-2 shadow-lg">
             <button
-              onClick={() => setActiveTab('personal')}
+              onClick={() => setActiveTab("personal")}
               className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === 'personal'
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-blue-600'
+                activeTab === "personal"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Personal Projects
             </button>
             <button
-              onClick={() => setActiveTab('public')}
+              onClick={() => setActiveTab("public")}
               className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === 'public'
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-blue-600'
+                activeTab === "public"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Public Projects
@@ -126,15 +72,19 @@ const Portfolio = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex gap-3">
-                    <button className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    {/* DETAILGA O'TISH */}
+                    <button 
+                      onClick={() => navigate(`/portfolio/${project.id}`)}
+                      className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors"
+                    >
                       <Eye className="w-5 h-5 text-white" />
                     </button>
-                    <button className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
                       <ExternalLink className="w-5 h-5 text-white" />
-                    </button>
-                    <button className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    </a>
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
                       <Github className="w-5 h-5 text-white" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -1,31 +1,26 @@
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";  
+import Index from "./components";
+import ProjectDetail from "./components/ProjectDetails";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <Router>
+      <div className="min-h-screen flex flex-col">
       <Header />
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="services">
-          <Services />
-        </section>
-        <section id="portfolio">
-          <Portfolio />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
-      <Footer />
-    </div>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/portfolio/:id" element={<ProjectDetail />} />
+            <Route path="/privacy-policy" element={<></>} />
+            <Route path="/cookie-policy" element={<></>} />
+            <Route path="/terms-of-service" element={<></>} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
