@@ -61,12 +61,6 @@ const Services = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-                {/* <div className="mt-6">
-                  <button className="text-blue-600 font-semibold hover:text-purple-600 transition-colors group flex items-center gap-2">
-                    Learn More
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
-                </div> */}
               </div>
             );
           })}

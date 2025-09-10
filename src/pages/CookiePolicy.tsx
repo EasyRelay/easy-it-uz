@@ -153,7 +153,7 @@ const CookiePolicy: React.FC = () => {
             <div className="bg-gray-50 p-6 rounded-lg space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-800" />
-                <span className="text-gray-700">contact@easyit.com</span>
+                <span className="text-gray-700">easyituz@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-800" />

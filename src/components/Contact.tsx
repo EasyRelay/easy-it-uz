@@ -88,8 +88,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@easyit.uz',
-      link: 'mailto:info@easyit.uz'
+      value: 'easyituz@gmail.com',
+      link: 'mailto:easyituz@gmail.com'
     },
     {
       icon: Phone,
