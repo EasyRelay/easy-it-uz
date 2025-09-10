@@ -56,13 +56,14 @@ const ProjectDetail = () => {
       
       <p>Built with a stack that includes ${project.tech?.join(', ') || 'modern web technologies'}, this application demonstrates the power of combining robust backend systems with intuitive frontend interfaces. The architecture was carefully planned to ensure scalability, maintainability, and performance.</p>
       
-      <h3>Development Approach</h3>
+      <br/>
+      <h3 style="font-weight: bold;">Development Approach</h3>
       <p>The development process followed agile methodologies, with a focus on iterative improvements and user feedback. Each component was designed with reusability in mind, creating a cohesive system that's both powerful and flexible.</p>
-      
-      <h3>Technical Implementation</h3>
+      <br/>
+      <h3 style="font-weight: bold;">Technical Implementation</h3>
       <p>The technical implementation leverages modern development practices including responsive design, performance optimization, and accessibility standards. The codebase maintains a clean structure with thorough documentation, making it easy for other developers to understand and contribute.</p>
-      
-      <h3>Results and Impact</h3>
+      <br/>
+      <h3 style="font-weight: bold;">Results and Impact</h3>
       <p>This project has successfully delivered value to users by streamlining processes, improving engagement metrics, and providing a foundation for future enhancements. The solution stands as a testament to the effective application of technology to solve real-world problems.</p>
     `;
   };
@@ -120,8 +121,8 @@ const ProjectDetail = () => {
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Project Header */}
         <div className="max-w-5xl mx-auto mb-8">
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-2">
               <div className="flex-1">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   {project.title}
@@ -158,7 +159,7 @@ const ProjectDetail = () => {
                     className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg text-sm font-medium"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
+                    View Live
                   </a>
                 )}
                 
@@ -337,7 +338,7 @@ const ProjectDetail = () => {
                       className="flex items-center justify-center w-full px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg text-sm font-medium"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      View Live Demo
+                      View Live
                     </a>
                   )}
                   
@@ -356,7 +357,6 @@ const ProjectDetail = () => {
                 
                 {/* Additional Info */}
                 <div className="pt-4 border-t border-gray-200">
-                  <h4 className="text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide">Project Info</h4>
                   
                   {project.date && (
                     <div className="mb-3">
