@@ -1,7 +1,7 @@
-import Hero from "./Hero";
-import Portfolio from "./Portfolio";
-import Services from "./Services";
-import Contact from "./Contact";
+import Hero from "../components/Hero";
+import Portfolio from "../components/Portfolio";
+import Services from "../components/Services";
+import Contact from "../components/Contact";
 
 function Index() {
   return (

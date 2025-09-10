@@ -1,114 +1,99 @@
-import { useState } from "react";
-import { ExternalLink, Github, Eye } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+"use client";
 
-const Portfolio = () => {
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("personal");
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase/supabaseClient";
+import { ExternalLink, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-  const personalProjects2 = [
-    { id: 1, title: "E-Commerce Platform", description: "Modern online store with advanced features", image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "Node.js", "MongoDB"], liveUrl: "#", githubUrl: "#" },
-    { id: 2, title: "Task Management App", description: "Collaborative project management solution", image: "https://images.pexels.com/photos/7688374/pexels-photo-7688374.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Vue.js", "Express", "PostgreSQL"], liveUrl: "#", githubUrl: "#" },
-    { id: 3, title: "AI Chat Bot", description: "Intelligent customer service automation", image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Python", "TensorFlow", "Telegram API"], liveUrl: "#", githubUrl: "#" },
-    { id: 4, title: "Real Estate Platform", description: "Property listing and management system", image: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Next.js", "Prisma", "Supabase"], liveUrl: "#", githubUrl: "#" }
-  ];
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  live_url: string;
+}
 
-  const personalProjects = [
-    {id: 1, title: "A to Z Freight solution LLC", description: "Your trusted partner in smart logistics.", image: "/images/atoz.png", tech: ["TypeScript", "Vite", "React"], liveUrl: "https://azfreightllc.com/", githubUrl: "https://github.com/EasyRelay/a-to-z"},
-    {id: 2, title: "Thomas a Huneycutt Trucking Inc", description: "Professional freight services with reliable drivers and cutting-edge fleet monitoring. Your cargo, our commitment.", image: "/images/thomas-huneycutt.png", tech: ["TypeScript", "React", "Telegram API"], liveUrl: "https://thomasohio.com/", githubUrl: "https://github.com/EasyRelay/thomas-a-huneycutt"}
+export default function Portfolio() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [showAll, setShowAll] = useState(false);
+  const navigator = useNavigate();
 
-  ]
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
-  const publicProjects = [
-    { id: 5, title: "Open Source UI Library", description: "Component library for React applications", image: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["React", "TypeScript", "Storybook"], liveUrl: "#", githubUrl: "#" },
-    { id: 6, title: "Developer Portfolio Template", description: "Free portfolio template for developers", image: "https://images.pexels.com/photos/196655/pexels-photo-196655.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Gatsby", "GraphQL", "Netlify"], liveUrl: "#", githubUrl: "#" },
-    { id: 7, title: "API Documentation Tool", description: "Tool for generating beautiful API docs", image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800", tech: ["Node.js", "Express", "Swagger"], liveUrl: "#", githubUrl: "#" }
-  ];
+  const fetchProjects = async () => {
+    const { data, error } = await supabase
+      .from("easy_it_profile")
+      .select("*")
+      .order("id", { ascending: false });
+    if (error) console.error("Fetch error:", error);
+    else setProjects(data || []);
+  };
 
-  const currentProjects = activeTab === "personal" ? personalProjects : publicProjects;
+  // Dastlab 6 ta project ko'rsatiladi
+  const visibleProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our work and see how we've helped businesses transform their digital presence.
-          </p>
-        </div>
+    <section id="portfolio" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+          Our Portfolio
+        </h2>
 
-        {/* Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-white rounded-xl p-2 shadow-lg">
-            <button
-              onClick={() => setActiveTab("personal")}
-              className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === "personal"
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
-            >
-              Personal Projects
-            </button>
-            <button
-              onClick={() => setActiveTab("public")}
-              className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === "public"
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
-            >
-              Public Projects
-            </button>
-          </div>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentProjects.map((project) => (
-            <div 
+        {/* Projects grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {visibleProjects.map((project) => (
+            <div
               key={project.id}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
+              {/* Image + hover overlay */}
               <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex gap-3">
-                    {/* DETAILGA O'TISH */}
-                    <button 
-                      onClick={() => navigate(`/portfolio/${project.id}`)}
+                    {/* View project detail */}
+                    <button
                       className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors"
+                      onClick={() => navigator(`/portfolio/${project.id}`)}
                     >
                       <Eye className="w-5 h-5 text-white" />
                     </button>
-                    <Link to={project.liveUrl? project.liveUrl : ""} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
+                    <a
+                      href={project.live_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors"
+                    >
                       <ExternalLink className="w-5 h-5 text-white" />
-                    </Link>
-                    <Link to={project.githubUrl? project.liveUrl : ""} target="_blank" rel="noreferrer" className="bg-white/20 backdrop-blur-lg p-2 rounded-full hover:bg-white/30 transition-colors">
-                      <Github className="w-5 h-5 text-white" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
-              
+
+              {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 line-clamp-3">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, index) => (
-                    <span 
-                      key={index}
+                  {project.tech.map((t, i) => (
+                    <span
+                      key={i}
                       className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium"
                     >
-                      {tech}
+                      {t}
                     </span>
                   ))}
                 </div>
@@ -116,9 +101,27 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
+
+        {/* Show more button */}
+        {projects.length > 6 && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+            >
+              {showAll ? (
+                <>
+                  Show Less <ChevronUp className="w-5 h-5" />
+                </>
+              ) : (
+                <>
+                  Show More <ChevronDown className="w-5 h-5" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
-};
-
-export default Portfolio;
+}

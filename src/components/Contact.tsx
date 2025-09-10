@@ -26,35 +26,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
-
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const data = "Fullname: " + formData.name +
-  //       (formData.phone ? ("\n" + "Phone: " + formData) : "") + "\n" +
-  //       "Email: " + formData.email +
-  //       (formData.message ? "\n" + "Message: " + formData.message : "");
-
-  //     const res = await fetch('https://eo6ap9o50y8rq44.m.pipedream.net', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: data,
-  //     });
-
-  //     if (!res.ok) throw new Error('Network response was not ok');
-  //     setFormData({
-  //       name: '',
-  //       email: '',
-  //       phone: '',
-  //       message: ''
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -123,8 +94,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+998 (90) 123-45-67',
-      link: 'tel:+998901234567'
+      value: '+998 (94) 683-44-89',
+      link: 'tel:+998946834489'
     },
     {
       icon: MapPin,

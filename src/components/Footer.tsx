@@ -1,8 +1,9 @@
 import { Code, Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     { icon: Github, href: '#', label: 'GitHub' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
@@ -34,7 +35,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
                 <Code className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold">EasyIT.uz</span>
+              <span className="text-2xl font-bold">EasyIT</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               We provide innovative IT solutions to help businesses thrive in the digital age. From web development to automation, we've got you covered.
@@ -62,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                   >
@@ -80,7 +81,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={service.href}
                     className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                   >
@@ -105,7 +106,7 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <a href="tel:+998901234567" className="text-gray-300 hover:text-white transition-colors">
-                  +998 (90) 123-45-67
+                  +998 (94) 683-44-89
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -120,12 +121,12 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-300 text-center md:text-left">
-              © {currentYear} EasyIT.uz. All rights reserved.
+              © {currentYear} EasyIT. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-gray-300">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

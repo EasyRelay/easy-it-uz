@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";  
-import Index from "./components";
+import Index from "./pages";
 import ProjectDetail from "./components/ProjectDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import PortfolioModal from "./components/AddPortfolioModal";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 function App() {
   return (
@@ -13,9 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio/:id" element={<ProjectDetail />} />
-            <Route path="/privacy-policy" element={<></>} />
-            <Route path="/cookie-policy" element={<></>} />
-            <Route path="/terms-of-service" element={<></>} />
+            <Route path="/portfolio/add" element={<PortfolioModal />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy></PrivacyPolicy>} />
+            <Route path="/cookie-policy" element={<CookiePolicy></CookiePolicy>} />
+            <Route path="/terms-of-service" element={<TermsOfService></TermsOfService>} />
           </Routes>
         </main>
         <Footer />
