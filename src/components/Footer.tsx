@@ -1,13 +1,11 @@
-import { Code, Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Github, href: 'https://github.com/EasyRelay', label: 'GitHub' },
     { icon: Instagram, href: '#', label: 'Instagram' }
   ];
 
@@ -30,12 +28,11 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <div className='w-[140px] h-14'>
+                <img src="/logos/easyit-logo-white.png" alt="" />
               </div>
-              <span className="text-2xl font-bold">EasyIT</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               We provide innovative IT solutions to help businesses thrive in the digital age. From web development to automation, we've got you covered.
