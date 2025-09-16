@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { ExternalLink, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ⬅️ qo‘shildi
+import { useTranslation } from 'react-i18next';
 
 interface Project {
   id: number;
@@ -18,6 +20,7 @@ export default function Portfolio() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [showAll, setShowAll] = useState(false);
   const navigator = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchProjects();
@@ -39,14 +42,18 @@ export default function Portfolio() {
     <section id="portfolio" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-          Our Portfolio
+          {t('portfolio.title')}
         </h2>
 
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleProjects.map((project) => (
-            <div
+          {visibleProjects.map((project, index) => (
+            <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
               {/* Image + hover overlay */}
@@ -98,7 +105,7 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -111,11 +118,11 @@ export default function Portfolio() {
             >
               {showAll ? (
                 <>
-                  Show Less <ChevronUp className="w-5 h-5" />
+                  {t('portfolio.showLess')} <ChevronUp className="w-5 h-5" />
                 </>
               ) : (
                 <>
-                  Show More <ChevronDown className="w-5 h-5" />
+                  {t('portfolio.showMore')} <ChevronDown className="w-5 h-5" />
                 </>
               )}
             </button>

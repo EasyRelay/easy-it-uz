@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { Cookie, Mail, Phone, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const CookiePolicy: React.FC = () => {
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0,0);
@@ -16,9 +18,9 @@ const CookiePolicy: React.FC = () => {
             <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-6">
               <Cookie className="h-8 w-8" />
             </div>
-            <h1 className="text-4xl font-bold mb-4">Cookie Policy</h1>
+            <h1 className="text-4xl font-bold mb-4">{t('legal.cookie.title')}</h1>
             <p className="text-xl text-blue-100">
-              Learn how we use cookies to improve your browsing experience.
+              {t('legal.cookie.subtitle')}
             </p>
           </div>
         </div>
@@ -29,15 +31,15 @@ const CookiePolicy: React.FC = () => {
         <div className="prose prose-lg max-w-none">
           <div className="bg-blue-50 border-l-4 border-blue-800 p-6 mb-8 rounded-r-lg">
             <p className="text-gray-700 mb-2">
-              <strong>Last updated:</strong> September, 2025
+              <strong>{t('common.lastUpdated')}</strong> September, 2025
             </p>
             <p className="text-gray-700">
-              This Cookie Policy explains how Easy IT uses cookies and similar technologies.
+              {t('legal.cookie.updatedIntro')}
             </p>
           </div>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">What Are Cookies?</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.cookie.whatAre')}</h2>
             <p className="text-gray-600 leading-relaxed">
               Cookies are small text files that are stored on your computer or mobile device when you 
               visit a website. They allow the website to remember your actions and preferences over 
@@ -47,108 +49,101 @@ const CookiePolicy: React.FC = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Types of Cookies We Use</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.cookie.typesTitle')}</h2>
             <div className="space-y-6">
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Essential Cookies</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">{t('legal.cookie.types.essential.title')}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  These cookies are necessary for the website to function properly. They enable basic 
-                  functions like page navigation and access to secure areas of the website.
+                  {t('legal.cookie.types.essential.desc')}
                 </p>
               </div>
               
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Performance Cookies</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">{t('legal.cookie.types.performance.title')}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  These cookies collect information about how visitors use our website, such as which 
-                  pages are visited most often. This data helps us improve our website performance.
+                  {t('legal.cookie.types.performance.desc')}
                 </p>
               </div>
               
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Functionality Cookies</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">{t('legal.cookie.types.functionality.title')}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  These cookies allow the website to remember choices you make and provide enhanced, 
-                  more personal features. They may be set by us or by third-party providers.
+                  {t('legal.cookie.types.functionality.desc')}
                 </p>
               </div>
               
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Marketing Cookies</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">{t('legal.cookie.types.marketing.title')}</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  These cookies are used to deliver advertisements more relevant to you and your interests. 
-                  They are also used to limit the number of times you see an advertisement.
+                  {t('legal.cookie.types.marketing.desc')}
                 </p>
               </div>
             </div>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">How We Use Cookies</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.cookie.howWeUse')}</h2>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                To remember your preferences and settings
+                {t('legal.cookie.howList.remember')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                To analyze website traffic and usage patterns
+                {t('legal.cookie.howList.analyze')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                To provide personalized content and advertisements
+                {t('legal.cookie.howList.personalize')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                To improve website functionality and user experience
+                {t('legal.cookie.howList.improve')}
               </li>
             </ul>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Managing Cookies</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.cookie.managing')}</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              You can control and manage cookies in various ways. Most browsers allow you to:
+              {t('legal.cookie.managingIntro')}
             </p>
             <ul className="space-y-2 text-gray-600 mb-6">
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                See what cookies are stored and delete them individually
+                {t('legal.cookie.managingList.seeDelete')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                Block third-party cookies
+                {t('legal.cookie.managingList.blockThird')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                Block cookies from particular sites
+                {t('legal.cookie.managingList.blockSites')}
               </li>
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                Block all cookies from being set
+                {t('legal.cookie.managingList.blockAll')}
               </li>
             </ul>
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
               <p className="text-yellow-800">
-                <strong>Please note:</strong> Disabling certain cookies may affect the functionality 
-                of our website and your user experience.
+                <strong>{t('legal.cookie.note')}</strong> {t('legal.cookie.noteDesc')}
               </p>
             </div>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Third-Party Cookies</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.cookie.thirdParty.title')}</h2>
             <p className="text-gray-600 leading-relaxed">
-              We may also use third-party services such as Google Analytics, which may set their own 
-              cookies. We have no control over these cookies and recommend you check the relevant 
-              third party's website for more information about their cookie policy.
+              {t('legal.cookie.thirdParty.desc')}
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('common.contactUs')}</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              If you have any questions about our use of cookies, please contact us:
+              {t('legal.cookie.contactIntro')}
             </p>
             <div className="bg-gray-50 p-6 rounded-lg space-y-3">
               <div className="flex items-center space-x-3">

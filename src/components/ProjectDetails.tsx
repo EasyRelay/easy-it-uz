@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 import { ArrowLeft, ExternalLink, Github, Calendar, User, ChevronRight, Code, Layout, Cpu, Zap } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 interface Project {
   id: number;
@@ -25,6 +26,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -73,7 +75,7 @@ const ProjectDetail = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="animate-pulse flex flex-col items-center">
           <div className="w-16 h-16 bg-blue-500/20 rounded-full mb-4"></div>
-          <p className="text-gray-500">Loading project details...</p>
+          <p className="text-gray-500">{t('project.loading')}</p>
         </div>
       </div>
     );
@@ -83,12 +85,12 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="text-center p-8 bg-white rounded-2xl shadow-sm max-w-md border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Project not found</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('common.notFound')}</h2>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg"
           >
-            Return Home
+            {t('common.returnHome')}
           </button>
         </div>
       </div>
@@ -106,11 +108,11 @@ const ProjectDetail = () => {
               className="flex items-center text-gray-600 hover:text-blue-600 transition-all group font-medium"
             >
               <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Projects
+              {t('project.backTo')}
             </button>
             
             <div className="flex items-center">
-              <span className="text-sm text-gray-500 mr-2">Project</span>
+              <span className="text-sm text-gray-500 mr-2">{t('project.breadcrumbProject')}</span>
               <ChevronRight className="w-4 h-4 text-gray-400" />
               <span className="text-sm text-gray-700 ml-2 font-medium">{project.title}</span>
             </div>
@@ -159,7 +161,7 @@ const ProjectDetail = () => {
                     className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg text-sm font-medium"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live
+                    {t('project.viewLive')}
                   </a>
                 )}
                 
@@ -171,7 +173,7 @@ const ProjectDetail = () => {
                     className="flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium"
                   >
                     <Github className="w-4 h-4 mr-2" />
-                    Source Code
+                    {t('project.sourceCode')}
                   </a>
                 )}
               </div>
@@ -210,7 +212,7 @@ const ProjectDetail = () => {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200 flex items-center">
                   <Code className="w-6 h-6 mr-3 text-blue-500" />
-                  Project Overview
+                  {t('project.overview')}
                 </h2>
                 
                 <div 
@@ -223,7 +225,7 @@ const ProjectDetail = () => {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200 flex items-center">
                   <Cpu className="w-6 h-6 mr-3 text-blue-500" />
-                  Technology Stack
+                  {t('project.techStack')}
                 </h2>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -235,11 +237,11 @@ const ProjectDetail = () => {
                           <h3 className="font-semibold text-blue-700">{technology}</h3>
                         </div>
                         <p className="text-sm text-blue-600">
-                          Used for {technology.toLowerCase().includes('react') ? 'building user interfaces' : 
+                          {`Used for ${technology.toLowerCase().includes('react') ? 'building user interfaces' : 
                           technology.toLowerCase().includes('node') ? 'server-side logic' : 
                           technology.toLowerCase().includes('tailwind') ? 'styling components' : 
                           technology.toLowerCase().includes('supabase') ? 'database management' : 
-                          'various application functionalities'}
+                          'various application functionalities'}`}
                         </p>
                       </div>
                     ))}
@@ -250,7 +252,7 @@ const ProjectDetail = () => {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200 flex items-center">
                   <Zap className="w-6 h-6 mr-3 text-blue-500" />
-                  Key Features
+                  {t('project.keyFeatures')}
                 </h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -261,7 +263,7 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">Responsive Design</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.responsive')}</h3>
                     </div>
                     <p className="text-gray-700 text-sm">Adapts seamlessly to all device sizes from mobile to desktop, ensuring optimal user experience across platforms.</p>
                   </div>
@@ -273,7 +275,7 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">Performance Optimized</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.perf')}</h3>
                     </div>
                     <p className="text-gray-700 text-sm">Implements best practices for fast loading times and smooth interactions, enhancing user engagement.</p>
                   </div>
@@ -285,7 +287,7 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">Modern UI/UX</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.modern')}</h3>
                     </div>
                     <p className="text-gray-700 text-sm">Features an intuitive interface with contemporary design principles that prioritize user needs and interactions.</p>
                   </div>
@@ -297,7 +299,7 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">Clean Architecture</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.cleanArch')}</h3>
                     </div>
                     <p className="text-gray-700 text-sm">Built with maintainable code structure and organization, making it easy to extend and scale over time.</p>
                   </div>
@@ -309,12 +311,12 @@ const ProjectDetail = () => {
             <div className="w-full lg:w-80">
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 sticky top-24">
                 <h3 className="text-lg font-semibold text-gray-900 mb-6 pb-3 border-b border-gray-200">
-                  Project Details
+                  {t('project.details')}
                 </h3>
                 
                 {/* Tech Stack */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide">Technologies</h4>
+                  <h4 className="text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide">{t('project.technologies')}</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech &&
                       project.tech.map((t, idx) => (
@@ -338,7 +340,7 @@ const ProjectDetail = () => {
                       className="flex items-center justify-center w-full px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg text-sm font-medium"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      View Live
+                      {t('project.viewLive')}
                     </a>
                   )}
                   
@@ -350,7 +352,7 @@ const ProjectDetail = () => {
                       className="flex items-center justify-center w-full px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium"
                     >
                       <Github className="w-4 h-4 mr-2" />
-                      View Source Code
+                      {t('project.sourceCode')}
                     </a>
                   )}
                 </div>
@@ -360,21 +362,21 @@ const ProjectDetail = () => {
                   
                   {project.date && (
                     <div className="mb-3">
-                      <div className="text-xs text-gray-500 mb-1">Completion Date</div>
+                      <div className="text-xs text-gray-500 mb-1">{t('project.completionDate')}</div>
                       <div className="text-gray-900 font-medium">{project.date}</div>
                     </div>
                   )}
                   
                   {project.client && (
                     <div className="mb-3">
-                      <div className="text-xs text-gray-500 mb-1">Client</div>
+                      <div className="text-xs text-gray-500 mb-1">{t('project.client')}</div>
                       <div className="text-gray-900 font-medium">{project.client}</div>
                     </div>
                   )}
                   
                   {project.category && (
                     <div>
-                      <div className="text-xs text-gray-500 mb-1">Category</div>
+                      <div className="text-xs text-gray-500 mb-1">{t('project.category')}</div>
                       <div className="text-gray-900 font-medium">{project.category}</div>
                     </div>
                   )}

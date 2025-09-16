@@ -1,26 +1,28 @@
-import { Mail, Phone, MapPin, Github, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/EasyRelay', label: 'GitHub' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
-  ];
+  // const socialLinks = [
+  //   { icon: Github, href: 'https://github.com/EasyRelay', label: 'GitHub' },
+  //   { icon: Instagram, href: '#', label: 'Instagram' }
+  // ];
 
   const quickLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('footer.services'), href: '#services' },
+    { name: t('common.portfolio'), href: '#portfolio' },
+    { name: t('footer.about'), href: '#about' },
+    { name: t('common.contact'), href: '#contact' }
   ];
 
   const services = [
-    { name: 'Web Development', href: '#' },
-    { name: 'Bot Development', href: '#' },
-    { name: 'Mobile Apps', href: '#' },
-    { name: 'Cloud Solutions', href: '#' }
+    { name: t('services.items.webDev.title'), href: '#' },
+    { name: t('services.items.botDev.title'), href: '#' },
+    { name: t('services.items.mobileApps.title'), href: '#' },
+    { name: t('services.items.cloud.title'), href: '#' }
   ];
 
   return (
@@ -35,10 +37,10 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              We provide innovative IT solutions to help businesses thrive in the digital age. From web development to automation, we've got you covered.
+              {t('footer.companyBlurb')}
             </p>
             <div className="flex gap-4">
-              {socialLinks.map((social, index) => {
+              {/* {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 return (
                   <a
@@ -50,13 +52,13 @@ const Footer = () => {
                     <Icon className="w-5 h-5" />
                   </a>
                 );
-              })}
+              })} */}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -74,7 +76,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Services</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.services')}</h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
@@ -92,7 +94,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Contact Info</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.contactInfo')}</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
@@ -108,7 +110,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                <span className="text-gray-300">Tashkent, Uzbekistan</span>
+                <span className="text-gray-300">{t('contact.info.city')}</span>
               </div>
             </div>
           </div>
@@ -118,12 +120,12 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-300 text-center md:text-left">
-              © {currentYear} EasyIT. All rights reserved.
+              © {currentYear} EasyIT. {t('footer.rights')}
             </p>
             <div className="flex gap-6 text-sm text-gray-300">
-              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
-              <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
+              <Link to="/cookie-policy" className="hover:text-white transition-colors">{t('footer.cookie')}</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors">{t('footer.terms')}</Link>
             </div>
           </div>
         </div>

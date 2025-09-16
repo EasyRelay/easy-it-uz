@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,16 +17,20 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('common.home'), href: '#home' },
+    { name: t('common.services'), href: '#services' },
+    { name: t('common.portfolio'), href: '#portfolio' },
+    { name: t('common.contact'), href: '#contact' }
   ];
 
   const pathname = window.location.pathname;
   const isNumber = parseInt(pathname.split('/')[2]);
 
   const acceptToOpen = isNumber && pathname === '/portfolio/' + pathname.split('/')[2];
+
+  const changeLanguage = (lng: 'uz' | 'ru' | 'en') => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div>
@@ -38,7 +44,7 @@ const Header = () => {
               {/* Logo */}
               <div className="flex items-center cursor-pointer gap-3">
                 <div className='flex justify-center items-center rounded-lg bg-gradient-to-r w-[140px] h-14 active:scale-105'>
-                  <img src={isScrolled ? '/logos/Рисунок2.png' : '/logos/easyit-logo-white.png'} onClick={() => { navigate("/") }} className={`flex w-32 h-12 text-2xl font-extrabold items-center justify-center active:scale-90 rounded-lg shadow-lg ${!isScrolled && (pathname === '/' || pathname === '/privacy-policy' || pathname === '/cookie-policy' || pathname === '/terms-of-service') ? 'text-white' : 'text-black'}`} />
+                  <img src={isScrolled ? '/logos/Рисунок2.png' : '/logos/easyit-logo-white.png'} onClick={() => { navigate("/") }} className={`flex w-32 h-10 text-2xl font-extrabold items-center justify-center active:scale-90 rounded-lg  ${!isScrolled && (pathname === '/' || pathname === '/privacy-policy' || pathname === '/cookie-policy' || pathname === '/terms-of-service') ? 'text-white' : 'text-black'}`} />
                 </div>
               </div>
 
@@ -55,15 +61,18 @@ const Header = () => {
                 ))}
               </nav>
 
-              {useLocation().pathname === '/' && (
-                <div className="hidden md:block">
-                  <a
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-                    href='#contact'
+              {/* Language Switcher */}
+              <div className="hidden md:flex items-center gap-2">
+                {(['uz','ru','en'] as const).map((lng) => (
+                  <button
+                    key={lng}
+                    onClick={() => changeLanguage(lng)}
+                    className={`px-3 py-1 rounded-md text-sm font-medium border ${i18n.resolvedLanguage === lng ? 'bg-blue-600 text-white border-blue-600' : isScrolled ? 'text-gray-700 border-gray-300' : 'text-white border-white/50'}`}
                   >
-                    Get Started
-                  </a>
-                </div>)}
+                    {lng.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </header> : <div></div>
