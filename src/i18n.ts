@@ -21,7 +21,7 @@ const resources = {
         contactUs: 'Contact Us'
       },
       hero: {
-        titleLine1: 'Innovative',
+        titleLine1: 'Innovative ',
         titleEmphasis: 'IT Solutions',
         titleLine2: 'for Your Business',
         subtitle: 'We provide cutting-edge IT services, web development, automation, and comprehensive support to help your business thrive in the digital age.',
@@ -138,7 +138,16 @@ const resources = {
         technologies: 'Technologies',
         completionDate: 'Completion Date',
         client: 'Client',
-        category: 'Category'
+        category: 'Category',
+        keyFeaturesF: "Key Features",
+        responsiveF: "Responsive Design",
+        responsiveDesc: "Adapts seamlessly to all device sizes from mobile to desktop, ensuring optimal user experience across platforms.",
+        perfF: "High Performance",
+        perfDesc: "Implements best practices for fast loading times and smooth interactions, enhancing user engagement.",
+        modernF: "Modern UI",
+        modernDesc: "Features an intuitive interface with contemporary design principles that prioritize user needs and interactions.",
+        cleanArchF: "Clean Architecture",
+        cleanArchDesc: "Built with maintainable code structure and organization, making it easy to extend and scale over time."
       },
       legal: {
         cookie: {
@@ -266,7 +275,7 @@ const resources = {
         contactUs: 'Свяжитесь с нами'
       },
       hero: {
-        titleLine1: 'Инновационные',
+        titleLine1: 'Инновационные ',
         titleEmphasis: 'IT-решения',
         titleLine2: 'для вашего бизнеса',
         subtitle: 'Мы предоставляем передовые IT‑услуги, веб‑разработку, автоматизацию и комплексную поддержку, чтобы помочь вашему бизнесу развиваться в цифровую эпоху.',
@@ -337,7 +346,16 @@ const resources = {
         technologies: 'Технологии',
         completionDate: 'Дата завершения',
         client: 'Клиент',
-        category: 'Категория'
+        category: 'Категория',
+        keyFeaturesF: "Основные особенности",
+        responsiveF: "Адаптивный дизайн",
+        responsiveDesc: "Идеально подстраивается под все размеры устройств — от мобильных до настольных, обеспечивая удобство для пользователей.",
+        perfF: "Высокая производительность",
+        perfDesc: "Реализованы лучшие практики для быстрой загрузки и плавных взаимодействий.",
+        modernF: "Современный интерфейс",
+        modernDesc: "Интуитивно понятный интерфейс с современными принципами дизайна, ориентированными на пользователя.",
+        cleanArchF: "Чистая архитектура",
+        cleanArchDesc: "Построен на поддерживаемой структуре кода, что облегчает расширение и масштабирование."
       },
       legal: {
         cookie: {
@@ -441,7 +459,7 @@ const resources = {
         contactUs: 'Biz bilan bog‘laning'
       },
       hero: {
-        titleLine1: 'Innovatsion',
+        titleLine1: 'Innovatsion ',
         titleEmphasis: 'IT yechimlar',
         titleLine2: 'biznesingiz uchun',
         subtitle: 'Biz raqamli davrda biznesingizni rivojlantirish uchun ilg‘or IT xizmatlari, veb‑ishlab chiqish, avtomatlashtirish va to‘liq qo‘llab‑quvvatlashni taqdim etamiz.',
@@ -512,7 +530,16 @@ const resources = {
         technologies: 'Texnologiyalar',
         completionDate: 'Tugash sanasi',
         client: 'Mijoz',
-        category: 'Kategoriya'
+        category: 'Kategoriya',
+        keyFeaturesF: "Asosiy xususiyatlari",
+        responsiveF: "Moslashuvchan dizayn",
+        responsiveDesc: "Mobil telefondan tortib, kompyutergacha barcha qurilmalarda qulay ishlash imkonini beradi.",
+        perfF: "Yuqori samaradorlik",
+        perfDesc: "Tez yuklanish va silliq ishlash uchun eng yaxshi amaliyotlar qo‘llanilgan.",
+        modernF: "Zamonaviy UI",
+        modernDesc: "Foydalanuvchi ehtiyojlariga yo‘naltirilgan zamonaviy interfeysga ega.",
+        cleanArchF: "Toza arxitektura",
+        cleanArchDesc: "Kengaytirish va qo‘llab-quvvatlash oson bo‘lishi uchun toza kod tuzilmasida qurilgan."
       },
       legal: {
         cookie: {

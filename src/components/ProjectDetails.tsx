@@ -26,7 +26,9 @@ const ProjectDetail = () => {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const lang = i18n.resolvedLanguage;
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -52,22 +54,60 @@ const ProjectDetail = () => {
   };
 
   // Generate detailed content based on project data
-  const generateProjectContent = (project: Project) => {
+  const generateProjectContent = (project: Project, lang: string | undefined) => {
+    const techStack = project.tech?.join(", ");
+
+    if (lang === 'uz') {
+      return `
+          <p>${project.title} — bu zamonaviy veb-ishlab chiqishda muhim yutuq bo‘lib, ilg‘or texnologiyalarni va foydalanuvchi markazli dizayn tamoyillarini birlashtiradi. Ushbu loyiha raqamli muhitdagi muammolarni hal qilish hamda a’lo darajadagi foydalanuvchi tajribasini taqdim etish uchun yaratilgan.</p>
+  
+          <p>Stack sifatida ${techStack || "zamonaviy veb texnologiyalar"} ishlatildi, bu esa kuchli backend tizimlarini intuitiv frontend interfeyslari bilan uyg‘unlashtirish imkonini berdi. Arxitektura kengaytirilish, qo‘llab-quvvatlanish va samaradorlikni ta’minlash uchun ehtiyotkorlik bilan rejalashtirildi.</p>
+  
+          <br/>
+          <h3 style="font-weight: bold;">Dasturlash yondashuvi</h3>
+          <p>Ishlab chiqish jarayoni agile metodologiyalar asosida olib borildi, bunda iterativ yaxshilanishlar va foydalanuvchi fikr-mulohazalariga e’tibor qaratildi. Har bir komponent qayta ishlatish imkoniyatini hisobga olgan holda yaratildi.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Texnik amalga oshirish</h3>
+          <p>Loyihada responsiv dizayn, samaradorlikni optimallashtirish va accessibility standartlariga amal qilindi. Kod tuzilishi toza va yaxshi hujjatlashtirilgan bo‘lib, boshqa dasturchilar uchun ham tushunarli.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Natijalar va ta’sir</h3>
+          <p>Ushbu loyiha foydalanuvchilarga jarayonlarni soddalashtirish, jalb qilish ko‘rsatkichlarini yaxshilash va kelajakdagi rivojlanish uchun poydevor yaratish orqali qiymat berdi.</p>
+        `;
+    }
+
+    if (lang === 'ru') {
+      return `
+          <p>${project.title} — это значительное достижение в современной веб-разработке, объединяющее передовые технологии и принципы ориентированного на пользователя дизайна. Проект был создан для решения конкретных задач в цифровой среде и обеспечения исключительного пользовательского опыта.</p>
+  
+          <p>В проекте использован стек технологий: ${techStack || 'современные веб-технологии'}, что демонстрирует силу сочетания надежных backend-систем с интуитивно понятными frontend-интерфейсами. Архитектура тщательно продумана для обеспечения масштабируемости, поддержки и высокой производительности.</p>
+  
+          <br/>
+          <h3 style="font-weight: bold;">Подход к разработке</h3>
+          <p>Разработка велась по agile-методологиям с акцентом на итеративные улучшения и обратную связь от пользователей. Каждый компонент был создан с учетом повторного использования.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Техническая реализация</h3>
+          <p>Реализация включает современные практики: адаптивный дизайн, оптимизацию производительности и соответствие стандартам доступности. Кодовая база чистая, структурированная и хорошо документирована.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Результаты и эффект</h3>
+          <p>Проект успешно принес пользу пользователям: упростил процессы, улучшил показатели вовлеченности и заложил основу для будущих улучшений.</p>
+        `;
+    }
+
     return `
-      <p>The ${project.title} represents a significant achievement in modern web development, combining cutting-edge technologies with user-centered design principles. This project was designed to address specific challenges in the digital landscape while delivering an exceptional user experience.</p>
-      
-      <p>Built with a stack that includes ${project.tech?.join(', ') || 'modern web technologies'}, this application demonstrates the power of combining robust backend systems with intuitive frontend interfaces. The architecture was carefully planned to ensure scalability, maintainability, and performance.</p>
-      
-      <br/>
-      <h3 style="font-weight: bold;">Development Approach</h3>
-      <p>The development process followed agile methodologies, with a focus on iterative improvements and user feedback. Each component was designed with reusability in mind, creating a cohesive system that's both powerful and flexible.</p>
-      <br/>
-      <h3 style="font-weight: bold;">Technical Implementation</h3>
-      <p>The technical implementation leverages modern development practices including responsive design, performance optimization, and accessibility standards. The codebase maintains a clean structure with thorough documentation, making it easy for other developers to understand and contribute.</p>
-      <br/>
-      <h3 style="font-weight: bold;">Results and Impact</h3>
-      <p>This project has successfully delivered value to users by streamlining processes, improving engagement metrics, and providing a foundation for future enhancements. The solution stands as a testament to the effective application of technology to solve real-world problems.</p>
-    `;
+          <p>The ${project.title} represents a significant achievement in modern web development, combining cutting-edge technologies with user-centered design principles. This project was designed to address specific challenges in the digital landscape while delivering an exceptional user experience.</p>
+  
+          <p>Built with a stack that includes ${techStack || "modern web technologies"}, this application demonstrates the power of combining robust backend systems with intuitive frontend interfaces. The architecture was carefully planned to ensure scalability, maintainability, and performance.</p>
+  
+          <br/>
+          <h3 style="font-weight: bold;">Development Approach</h3>
+          <p>The development process followed agile methodologies, with a focus on iterative improvements and user feedback. Each component was designed with reusability in mind, creating a cohesive system that's both powerful and flexible.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Technical Implementation</h3>
+          <p>The technical implementation leverages modern development practices including responsive design, performance optimization, and accessibility standards. The codebase maintains a clean structure with thorough documentation, making it easy for other developers to understand and contribute.</p>
+          <br/>
+          <h3 style="font-weight: bold;">Results and Impact</h3>
+          <p>This project has successfully delivered value to users by streamlining processes, improving engagement metrics, and providing a foundation for future enhancements. The solution stands as a testament to the effective application of technology to solve real-world problems.</p>
+        `;
   };
 
   if (loading) {
@@ -110,7 +150,7 @@ const ProjectDetail = () => {
               <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
               {t('project.backTo')}
             </button>
-            
+
             <div className="flex items-center">
               <span className="text-sm text-gray-500 mr-2">{t('project.breadcrumbProject')}</span>
               <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -129,7 +169,7 @@ const ProjectDetail = () => {
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   {project.title}
                 </h1>
-                
+
                 <div className="flex flex-wrap gap-4 mb-4">
                   {project.date && (
                     <div className="flex items-center text-gray-600 text-sm bg-gray-50 px-3 py-1.5 rounded-lg">
@@ -164,7 +204,7 @@ const ProjectDetail = () => {
                     {t('project.viewLive')}
                   </a>
                 )}
-                
+
                 {project.github_url && (
                   <a
                     href={project.github_url}
@@ -178,7 +218,7 @@ const ProjectDetail = () => {
                 )}
               </div>
             </div>
-            
+
             <p className="text-gray-700 leading-relaxed text-lg">
               {project.description}
             </p>
@@ -214,10 +254,10 @@ const ProjectDetail = () => {
                   <Code className="w-6 h-6 mr-3 text-blue-500" />
                   {t('project.overview')}
                 </h2>
-                
-                <div 
+
+                <div
                   className="prose max-w-none text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: generateProjectContent(project) }}
+                  dangerouslySetInnerHTML={{ __html: generateProjectContent(project, lang) }}
                 />
               </div>
 
@@ -227,7 +267,7 @@ const ProjectDetail = () => {
                   <Cpu className="w-6 h-6 mr-3 text-blue-500" />
                   {t('project.techStack')}
                 </h2>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {project.tech &&
                     project.tech.map((technology, idx) => (
@@ -237,11 +277,11 @@ const ProjectDetail = () => {
                           <h3 className="font-semibold text-blue-700">{technology}</h3>
                         </div>
                         <p className="text-sm text-blue-600">
-                          {`Used for ${technology.toLowerCase().includes('react') ? 'building user interfaces' : 
-                          technology.toLowerCase().includes('node') ? 'server-side logic' : 
-                          technology.toLowerCase().includes('tailwind') ? 'styling components' : 
-                          technology.toLowerCase().includes('supabase') ? 'database management' : 
-                          'various application functionalities'}`}
+                          {`Used for ${technology.toLowerCase().includes('react') ? 'building user interfaces' :
+                            technology.toLowerCase().includes('node') ? 'server-side logic' :
+                              technology.toLowerCase().includes('tailwind') ? 'styling components' :
+                                technology.toLowerCase().includes('supabase') ? 'database management' :
+                                  'various application functionalities'}`}
                         </p>
                       </div>
                     ))}
@@ -252,10 +292,11 @@ const ProjectDetail = () => {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200 flex items-center">
                   <Zap className="w-6 h-6 mr-3 text-blue-500" />
-                  {t('project.keyFeatures')}
+                  {t('project.keyFeaturesF')}
                 </h2>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Responsive */}
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg mr-3">
@@ -263,11 +304,12 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">{t('project.responsive')}</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.responsiveF')}</h3>
                     </div>
-                    <p className="text-gray-700 text-sm">Adapts seamlessly to all device sizes from mobile to desktop, ensuring optimal user experience across platforms.</p>
+                    <p className="text-gray-700 text-sm">{t('project.responsiveDesc')}</p>
                   </div>
-                  
+
+                  {/* Performance */}
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg mr-3">
@@ -275,11 +317,12 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">{t('project.perf')}</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.perfF')}</h3>
                     </div>
-                    <p className="text-gray-700 text-sm">Implements best practices for fast loading times and smooth interactions, enhancing user engagement.</p>
+                    <p className="text-gray-700 text-sm">{t('project.perfDesc')}</p>
                   </div>
-                  
+
+                  {/* Modern UI */}
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg mr-3">
@@ -287,11 +330,12 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">{t('project.modern')}</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.modernF')}</h3>
                     </div>
-                    <p className="text-gray-700 text-sm">Features an intuitive interface with contemporary design principles that prioritize user needs and interactions.</p>
+                    <p className="text-gray-700 text-sm">{t('project.modernDesc')}</p>
                   </div>
-                  
+
+                  {/* Clean Architecture */}
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg mr-3">
@@ -299,9 +343,9 @@ const ProjectDetail = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="font-semibold text-gray-900">{t('project.cleanArch')}</h3>
+                      <h3 className="font-semibold text-gray-900">{t('project.cleanArchF')}</h3>
                     </div>
-                    <p className="text-gray-700 text-sm">Built with maintainable code structure and organization, making it easy to extend and scale over time.</p>
+                    <p className="text-gray-700 text-sm">{t('project.cleanArchDesc')}</p>
                   </div>
                 </div>
               </div>
@@ -313,7 +357,7 @@ const ProjectDetail = () => {
                 <h3 className="text-lg font-semibold text-gray-900 mb-6 pb-3 border-b border-gray-200">
                   {t('project.details')}
                 </h3>
-                
+
                 {/* Tech Stack */}
                 <div className="mb-6">
                   <h4 className="text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide">{t('project.technologies')}</h4>
@@ -329,7 +373,7 @@ const ProjectDetail = () => {
                       ))}
                   </div>
                 </div>
-                
+
                 {/* Project Links */}
                 <div className="space-y-3 mb-6">
                   {project.live_url && (
@@ -343,7 +387,7 @@ const ProjectDetail = () => {
                       {t('project.viewLive')}
                     </a>
                   )}
-                  
+
                   {project.github_url && (
                     <a
                       href={project.github_url}
@@ -356,24 +400,24 @@ const ProjectDetail = () => {
                     </a>
                   )}
                 </div>
-                
+
                 {/* Additional Info */}
                 <div className="pt-4 border-t border-gray-200">
-                  
+
                   {project.date && (
                     <div className="mb-3">
                       <div className="text-xs text-gray-500 mb-1">{t('project.completionDate')}</div>
                       <div className="text-gray-900 font-medium">{project.date}</div>
                     </div>
                   )}
-                  
+
                   {project.client && (
                     <div className="mb-3">
                       <div className="text-xs text-gray-500 mb-1">{t('project.client')}</div>
                       <div className="text-gray-900 font-medium">{project.client}</div>
                     </div>
                   )}
-                  
+
                   {project.category && (
                     <div>
                       <div className="text-xs text-gray-500 mb-1">{t('project.category')}</div>

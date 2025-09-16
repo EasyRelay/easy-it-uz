@@ -64,7 +64,7 @@ const Hero = () => {
           <div className="lg:w-1/2 mt-16 lg:mt-0 grid grid-cols-1 gap-6">
             <div
               className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 
-               hover:bg-white/20 transition-all duration-300 
+               hover:bg-white/30 transition-all duration-300 
                animate-fadeShine hover:animate-none"
               style={{ animationDelay: "0s" }}
             >
@@ -77,7 +77,7 @@ const Hero = () => {
 
             <div
               className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 
-               hover:bg-white/20 transition-all duration-300 
+               hover:bg-white/30 transition-all duration-300 
                animate-fadeShine hover:animate-none"
               style={{ animationDelay: "0.5s" }}
             >
@@ -90,7 +90,7 @@ const Hero = () => {
 
             <div
               className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 
-               hover:bg-white/20 transition-all duration-300 
+               hover:bg-white/30 transition-all duration-300 
                animate-fadeShine hover:animate-none"
               style={{ animationDelay: "1s" }}
             >

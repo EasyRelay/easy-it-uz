@@ -108,7 +108,7 @@ const Contact = () => {
       icon: MapPin,
       title: t('contact.info.location'),
       value: t('contact.info.city'),
-      link: '#'
+      link: 'https://www.google.com/maps/place/41%C2%B019\'25.1%22N+69%C2%B013\'53.5%22E/@41.323645,69.231535,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.323645!4d69.231535?entry=ttu'
     }
   ];
 
