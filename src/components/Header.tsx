@@ -62,12 +62,17 @@ const Header = () => {
               </nav>
 
               {/* Language Switcher */}
-              <div className="hidden md:flex items-center gap-2">
-                {(['uz','ru','en'] as const).map((lng) => (
+              <div className="flex items-center gap-2">
+                {(['uz', 'ru', 'en'] as const).map((lng) => (
                   <button
                     key={lng}
                     onClick={() => changeLanguage(lng)}
-                    className={`px-3 py-1 rounded-md text-sm font-medium border ${i18n.resolvedLanguage === lng ? 'bg-blue-600 text-white border-blue-600' : isScrolled ? 'text-gray-700 border-gray-300' : 'text-white border-white/50'}`}
+                    className={`px-3 py-1 rounded-md text-sm font-medium border ${i18n.resolvedLanguage === lng
+                        ? 'bg-blue-600 text-white border-blue-600'
+                        : isScrolled
+                          ? 'text-gray-700 border-gray-300'
+                          : 'text-white border-white/50'
+                      }`}
                   >
                     {lng.toUpperCase()}
                   </button>
