@@ -110,7 +110,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                <span className="text-gray-300">{t('contact.info.city')}</span>
+                <Link to={'https://www.google.com/maps/place/41%C2%B019\'25.1%22N+69%C2%B013\'53.5%22E/@41.323645,69.231535,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.323645!4d69.231535?entry=ttu'}
+                  className='text-gray-300 hover:text-white transition-colors'
+                >
+                  {t('contact.info.city')}
+                </Link>
               </div>
             </div>
           </div>

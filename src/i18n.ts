@@ -214,7 +214,15 @@ const resources = {
             optout: 'Opt out of marketing communications'
           },
           contactTitle: 'Contact Us',
-          contactIntro: 'If you have questions about this Privacy Policy or our practices, contact us:'
+          contactIntro: 'If you have questions about this Privacy Policy or our practices, contact us:',
+          ringCentral: 'RingCentral Integration',
+          ringCentralDesc: 'Our service uses RingCentral\'s APIs to facilitate communication. When you connect your RingCentral account, we may access and use data such as:',
+          ringCentralList: {
+            opp1: 'Your RingCentral account information',
+            opp2: 'Call and message metadata (not message content)',
+            opp3: 'Contact and directory information',
+          },
+          ringCentralNote: 'This data is not shared with third parties except as required to operate the service.',
         },
         terms: {
           title: 'Terms of Service',
@@ -409,7 +417,16 @@ const resources = {
           rightsIntro: 'Вы имеете право:',
           rightsList: { access: 'Доступ к данным', correct: 'Исправление неточностей', delete: 'Удаление данных', optout: 'Отказ от маркетинговых рассылок' },
           contactTitle: 'Связаться с нами',
-          contactIntro: 'По вопросам политики и практик свяжитесь с нами:'
+          contactIntro: 'По вопросам политики и практик свяжитесь с нами:',
+          ringCentral: "Интеграция с RingCentral",
+          ringCentralDesc: "Наш сервис использует API RingCentral для обеспечения связи. Когда вы подключаете свою учетную запись RingCentral, мы можем получить доступ и использовать такие данные, как:",
+          ringCentralList: {
+            opp1: "Информация о вашей учетной записи RingCentral",
+            opp2: "Метаданные звонков и сообщений (не содержимое сообщений)",
+            opp3: "Контактная и справочная информация"
+          },
+          ringCentralNote: "Эти данные не передаются третьим лицам, кроме случаев, когда это необходимо для работы сервиса."
+
         },
         terms: {
           title: 'Условия обслуживания',
@@ -593,7 +610,16 @@ const resources = {
           rightsIntro: 'Siz quyidagi huquqlarga egasiz:',
           rightsList: { access: 'Ma’lumotlarga kirish', correct: 'Noto‘g‘ri ma’lumotni tuzatish', delete: 'Ma’lumotni o‘chirish', optout: 'Marketing xabarlardan voz kechish' },
           contactTitle: 'Biz bilan bog‘laning',
-          contactIntro: 'Ushbu siyosat yoki amaliyotlar bo‘yicha savollar bo‘lsa, bizga murojaat qiling:'
+          contactIntro: 'Ushbu siyosat yoki amaliyotlar bo‘yicha savollar bo‘lsa, bizga murojaat qiling:',
+          ringCentral: "RingCentral integratsiyasi",
+          ringCentralDesc: "Xizmatimiz aloqa qilish uchun RingCentral API’laridan foydalanadi. Siz RingCentral hisobingizni ulaganingizda, biz quyidagi maʼlumotlarga kirishimiz va ulardan foydalanishimiz mumkin:",
+          ringCentralList: {
+            opp1: "Sizning RingCentral hisobingiz haqida maʼlumot",
+            opp2: "Qoʻngʻiroq va xabarlar metamaʼlumotlari (xabar mazmuni emas)",
+            opp3: "Kontaktlar va maʼlumotnoma maʼlumotlari"
+          },
+          ringCentralNote: "Ushbu maʼlumotlar xizmatni ishlatish uchun zarur boʻlgan hollardan tashqari uchinchi shaxslarga berilmaydi."
+
         },
         terms: {
           title: 'Xizmat ko‘rsatish shartlari',

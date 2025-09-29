@@ -96,6 +96,30 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.privacy.ringCentral')}</h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              {t('legal.privacy.ringCentralDesc')}
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                {t('legal.privacy.ringCentralList.opp1')}
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                {t('legal.privacy.ringCentralList.opp2')}
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                {t('legal.privacy.ringCentralList.opp3')}
+              </li>
+            </ul>
+            <p className="text-gray-600 mt-2 leading-relaxed">
+              {t('legal.privacy.ringCentralNote')}
+            </p>
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('legal.privacy.rights')}</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               {t('legal.privacy.rightsIntro')}
