@@ -30,12 +30,11 @@ export default function Portfolio() {
     const { data, error } = await supabase
       .from("easy_it_profile")
       .select("*")
-      .order("id", { ascending: false });
+      .order("id", { ascending: true });
     if (error) console.error("Fetch error:", error);
     else setProjects(data || []);
   };
 
-  // Dastlab 6 ta project ko'rsatiladi
   const visibleProjects = showAll ? projects : projects.slice(0, 6);
 
   return (

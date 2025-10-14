@@ -4,6 +4,7 @@ import ProjectDetail from "./components/ProjectDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PortfolioModal from "./components/AddPortfolioModal";
+import ProtectedRoute from "./components/ProtectedRoute";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -17,7 +18,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio/:id" element={<ProjectDetail />} />
-            <Route path="/portfolio/add" element={<PortfolioModal />} />
+            <Route path="/portfolio/add" element={
+              <ProtectedRoute>
+                <PortfolioModal />
+              </ProtectedRoute>
+            } />
             <Route path="/privacy-policy" element={<PrivacyPolicy></PrivacyPolicy>} />
             <Route path="/cookie-policy" element={<CookiePolicy></CookiePolicy>} />
             <Route path="/terms-of-service" element={<TermsOfService></TermsOfService>} />
