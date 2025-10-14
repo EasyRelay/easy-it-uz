@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-20 pr-4  gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-0 md:px-8 lg:px-20 gap-6 md:gap-8 lg:gap-10">
           <div className="space-y-4">
             <div className="flex items-center">
               <div className='w-[140px] h-14'>
@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between px-20 items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between px-0 md:px-8 lg:px-20 items-center gap-4">
             <p className="text-gray-300 text-center md:text-left">
               © {currentYear} EasyIT. {t('footer.rights')}
             </p>
