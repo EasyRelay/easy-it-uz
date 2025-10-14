@@ -4,29 +4,35 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        gradientReveal: {
-          "0%": { backgroundSize: "0% 0%", opacity: "0" },
-          "100%": { backgroundSize: "100% 100%", opacity: "1" },
+        typewriter: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' }
         },
-        fadeShine: {
-          '0%, 100%': { opacity: '0.6' },
-          '50%': { opacity: '1' },
+        blink: {
+          '0%, 50%': { opacity: '1' },
+          '51%, 100%': { opacity: '0' }
+        },
+        particle: {
+          '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { transform: 'translateY(-100vh) scale(1)', opacity: '0' }
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-20px) rotate(5deg)' }
         },
-        arrowMove: {
-          '0%, 100%': { transform: 'translateX(0)' },
-          '50%': { transform: 'translateX(5px)' },
-        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' }
+        }
       },
       animation: {
-        gradientReveal: "gradientReveal 2s ease-out forwards",
-        fadeShine: 'fadeShine 3s ease-in-out infinite',
-        glow: 'glowPulse 3s ease-in-out infinite',
-        float: 'float 6s ease-in-out infinite', 
-        arrowMove: 'arrowMove 1s ease-in-out infinite',
+        typewriter: 'typewriter 3s steps(40) 1s forwards',
+        blink: 'blink 1s infinite',
+        particle: 'particle 6s linear infinite',
+        float: 'float 6s ease-in-out infinite',
+        shimmer: 'shimmer 2s infinite'
       },
     },
   },
