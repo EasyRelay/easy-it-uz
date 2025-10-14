@@ -1,13 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logos/logo-orign.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EasyIT.uz Modern Landing Page</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>EasyIT.uz - Professional Web Development & IT Solutions</title>
+    <meta name="title" content="EasyIT.uz - Professional Web Development & IT Solutions" />
+    <meta name="description" content="Professional web development, mobile apps, Telegram bots, and cloud solutions. Transform your business with cutting-edge technology from EasyIT.uz" />
+    <meta name="keywords" content="web development, mobile apps, telegram bots, cloud solutions, IT services, Uzbekistan, Tashkent, React, Node.js" />
+    <meta name="author" content="EasyIT.uz" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://easyit.uz/" />
+    <meta property="og:title" content="EasyIT.uz - Professional Web Development & IT Solutions" />
+    <meta property="og:description" content="Professional web development, mobile apps, Telegram bots, and cloud solutions. Transform your business with cutting-edge technology." />
+    <meta property="og:image" content="/logos/easyit-logo-white.png" />
+    <meta property="og:site_name" content="EasyIT.uz" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://easyit.uz/" />
+    <meta property="twitter:title" content="EasyIT.uz - Professional Web Development & IT Solutions" />
+    <meta property="twitter:description" content="Professional web development, mobile apps, Telegram bots, and cloud solutions. Transform your business with cutting-edge technology." />
+    <meta property="twitter:image" content="/logos/easyit-logo-white.png" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/logos/logo-orign.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logos/logo-orign.png" />
+    <link rel="apple-touch-icon" href="/logos/logo-orign.png" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4F46E5" />
+    <meta name="msapplication-TileColor" content="#4F46E5" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EasyIT.uz",
+      "url": "https://easyit.uz",
+      "logo": "https://easyit.uz/logos/easyit-logo-white.png",
+      "description": "Professional web development, mobile apps, Telegram bots, and cloud solutions",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "UZ",
+        "addressLocality": "Tashkent"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+998946834489",
+        "contactType": "customer service",
+        "email": "easyituz@gmail.com"
+      },
+      "sameAs": [
+        "https://t.me/easyituz"
+      ]
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Loading fallback -->
+    <noscript>
+      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div style="text-align: center;">
+          <h1>EasyIT.uz</h1>
+          <p>Please enable JavaScript to view this website.</p>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root">
+      <!-- Loading spinner while React loads -->
+      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div style="text-align: center; color: white;">
+          <div style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+          <h2 style="margin: 0; font-family: Arial, sans-serif;">Loading EasyIT.uz...</h2>
+        </div>
+      </div>
+      <style>
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
