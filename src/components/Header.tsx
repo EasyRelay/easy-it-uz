@@ -25,8 +25,7 @@ const Header = () => {
 
   const pathname = window.location.pathname;
   const isNumber = parseInt(pathname.split('/')[2]);
-
-  const acceptToOpen = isNumber && pathname === '/portfolio/' + pathname.split('/')[2];
+  const acceptToOpen = pathname === '/portfolio/' + isNumber;
 
   const changeLanguage = (lng: 'uz' | 'ru' | 'en') => {
     i18n.changeLanguage(lng);
@@ -44,7 +43,7 @@ const Header = () => {
               {/* Logo */}
               <div className="flex items-center cursor-pointer gap-3">
                 <div className='flex justify-center items-center rounded-lg bg-gradient-to-r w-[140px] h-14 active:scale-105'>
-                  <img src={isScrolled ? '/logos/Рисунок2.png' : '/logos/easyit-logo-white.png'} onClick={() => { navigate("/") }} className={`flex w-32 h-10 text-2xl font-extrabold items-center justify-center active:scale-90 rounded-lg  ${!isScrolled && (pathname === '/' || pathname === '/privacy-policy' || pathname === '/cookie-policy' || pathname === '/terms-of-service') ? 'text-white' : 'text-black'}`} />
+                  <img src={window.location.pathname === '/' ? (isScrolled ? '/logos/Рисунок2.png' : '/logos/easyit-logo-white.png') : '/logos/Рисунок2.png'} onClick={() => { navigate("/") }} className={`flex w-32 h-10 text-2xl font-extrabold items-center justify-center active:scale-90 rounded-lg  ${!isScrolled && (pathname === '/' || pathname === '/privacy-policy' || pathname === '/cookie-policy' || pathname === '/terms-of-service') ? 'text-white' : 'text-black'}`} />
                 </div>
               </div>
 
@@ -69,9 +68,10 @@ const Header = () => {
                     onClick={() => changeLanguage(lng)}
                     className={`px-3 py-1 rounded-md text-sm font-medium border ${i18n.resolvedLanguage === lng
                         ? 'bg-blue-600 text-white border-blue-600'
-                        : isScrolled
+                        : window.location.pathname === '/'?(isScrolled
                           ? 'text-gray-700 border-gray-300'
-                          : 'text-white border-white/50'
+                          : 'text-white border-white/50')
+                        : 'text-gray-700 border-gray-300'
                       }`}
                   >
                     {lng.toUpperCase()}

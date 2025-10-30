@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { ExternalLink, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // ⬅️ qo‘shildi
+import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
 interface Project {
@@ -14,6 +14,7 @@ interface Project {
   image: string;
   tech: string[];
   live_url: string;
+  order_num: number;
 }
 
 export default function Portfolio() {
@@ -30,7 +31,7 @@ export default function Portfolio() {
     const { data, error } = await supabase
       .from("easy_it_profile")
       .select("*")
-      .order("id", { ascending: true });
+      .order("order_num", { ascending: true });
     if (error) console.error("Fetch error:", error);
     else setProjects(data || []);
   };

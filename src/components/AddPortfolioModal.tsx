@@ -13,6 +13,7 @@ interface Project {
     image: string;
     tech: string[];
     live_url: string;
+    order_num: number;
 }
 
 export default function PortfolioModal() {
@@ -25,6 +26,7 @@ export default function PortfolioModal() {
         description: "",
         image: "",
         live_url: "",
+        order_num: 0,
     });
     const [techList, setTechList] = useState<string[]>([]);
     const [techInput, setTechInput] = useState("");
@@ -37,6 +39,23 @@ export default function PortfolioModal() {
     useEffect(() => {
         fetchProjects();
     }, []);
+
+    const handleOpenModal = async () => {
+        const { data, error } = await supabase
+            .from("easy_it_profile")
+            .select("order_num")
+            .order("order_num", { ascending: false })
+            .limit(1);
+
+        if (error) {
+            console.error("Error fetching max order:", error);
+        } else {
+            const maxOrder = data?.[0]?.order_num || 0;
+            setForm((prev) => ({ ...prev, order_num: maxOrder + 1 }));
+        }
+
+        setOpenModal(true);
+    };
 
     const fetchProjects = async () => {
         const { data, error } = await supabase
@@ -96,6 +115,7 @@ export default function PortfolioModal() {
                     image: imageUrl,
                     tech: techList,
                     live_url: form.live_url,
+                    order_num: form.order_num,
                 },
             ])
             .select();
@@ -141,6 +161,7 @@ export default function PortfolioModal() {
                 image: imageUrl,
                 tech: techList,
                 live_url: form.live_url,
+                order_num: form.order_num,
             })
             .eq("id", editingProject.id);
 
@@ -178,6 +199,7 @@ export default function PortfolioModal() {
             description: project.description,
             image: project.image,
             live_url: project.live_url,
+            order_num: project.order_num,
         });
         setTechList(project.tech);
         setFile(null);
@@ -188,7 +210,7 @@ export default function PortfolioModal() {
     const closeModal = () => {
         setOpenModal(false);
         setEditingProject(null);
-        setForm({ title: "", description: "", image: "", live_url: "" });
+        setForm({ title: "", description: "", image: "", live_url: "", order_num: 0 });
         setTechList([]);
         setTechInput("");
         setFile(null);
@@ -204,7 +226,7 @@ export default function PortfolioModal() {
                 {/* Projects grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence>
-                        {projects.sort((a, b) => a.id - b.id).map((project) => (
+                        {projects.sort((a, b) => a.order_num - b.order_num).map((project) => (
                             <motion.div
                                 key={project.id}
                                 layout
@@ -251,8 +273,12 @@ export default function PortfolioModal() {
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                                        />
+                                        >
+                                        </img>
                                     )}
+                                    <div className="absolute w-6 h-6 top-3 left-3 items-center flex justify-center border border-gray-800 rounded-full bg-white">
+                                        {project.order_num}
+                                    </div>
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                                         <div className="flex gap-3">
                                             <button
@@ -300,7 +326,7 @@ export default function PortfolioModal() {
                 {/* Add project button */}
                 <div className="text-center mt-12">
                     <button
-                        onClick={() => setOpenModal(true)}
+                        onClick={() => handleOpenModal()}
                         className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                     >
                         + Add Project
@@ -431,6 +457,17 @@ export default function PortfolioModal() {
                                             value={form.live_url}
                                             onChange={handleChange}
                                             placeholder="https://example.com"
+                                            className="w-full border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none"
+                                        />
+                                    </div>
+                                    {/* Order number */}
+                                    <div>
+                                        <label className="block text-gray-700 mb-1 font-medium">Display Order</label>
+                                        <input
+                                            type="number"
+                                            name="order_num"
+                                            value={form.order_num}
+                                            onChange={(e) => setForm({ ...form, order_num: Number(e.target.value) })}
                                             className="w-full border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none"
                                         />
                                     </div>
