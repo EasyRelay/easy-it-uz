@@ -99,7 +99,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between px-0 md:px-8 lg:px-20 items-center gap-4">
             <p className="text-gray-300 text-center md:text-left">
-              © {currentYear} EasyIT. {t('footer.rights')}
+              <Link to='/portfolio/add' className="cursor-text">©</Link> {currentYear} EasyIT. {t('footer.rights')}
             </p>
             <div className="flex gap-6 text-sm text-gray-300">
               <Link to="/privacy-policy" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>

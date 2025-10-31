@@ -372,7 +372,7 @@ export default function PortfolioModal() {
                                             value={form.description}
                                             onChange={handleChange}
                                             placeholder="Write a short description..."
-                                            rows={4}
+                                            rows={3}
                                             className="w-full border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none resize-none"
                                             required
                                         />
