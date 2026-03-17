@@ -10,6 +10,7 @@ import PortfolioProjectModal from "../components/PortfolioProjectModal";
 
 export default function PortfolioAdminPage() {
     const [projects, setProjects] = useState<Project[]>([]);
+    const [searchQuery, setSearchQuery] = useState("");
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [editingProject, setEditingProject] = useState<Project | null>(null);
@@ -75,6 +76,15 @@ export default function PortfolioAdminPage() {
         }
     };
 
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const visibleProjects = projects
+        .slice()
+        .sort((a, b) => a.order_num - b.order_num)
+        .filter((p) => {
+            if (!normalizedQuery) return true;
+            return (p.title || "").toLowerCase().includes(normalizedQuery);
+        });
+
     return (
         <section id="portfolio" className="py-20 bg-gray-50">
             <div className="container mx-auto px-4">
@@ -82,12 +92,35 @@ export default function PortfolioAdminPage() {
                     Our Portfolio
                 </h2>
 
+                <div className="mb-6 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+                    <div className="flex-1">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Search by project title..."
+                            className="w-full border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none bg-white"
+                        />
+                        {normalizedQuery && (
+                            <div className="mt-2 text-sm text-gray-500">
+                                Showing {visibleProjects.length} of {projects.length}
+                            </div>
+                        )}
+                    </div>
+                    {searchQuery && (
+                        <button
+                            type="button"
+                            onClick={() => setSearchQuery("")}
+                            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium"
+                        >
+                            Clear
+                        </button>
+                    )}
+                </div>
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence>
-                        {projects
-                            .slice()
-                            .sort((a, b) => a.order_num - b.order_num)
-                            .map((project) => (
+                        {visibleProjects.map((project) => (
                                 <motion.div
                                     key={project.id}
                                     layout
@@ -175,7 +208,7 @@ export default function PortfolioAdminPage() {
                                         </div>
                                     </div>
                                 </motion.div>
-                            ))}
+                        ))}
                     </AnimatePresence>
                 </div>
 
