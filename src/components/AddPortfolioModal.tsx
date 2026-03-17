@@ -16,6 +16,41 @@ interface Project {
     order_num: number;
 }
 
+const DEFAULT_TECH_SUGGESTIONS = [
+    "React",
+    "Next.js",
+    "Vue",
+    "Nuxt",
+    "Angular",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "Bootstrap",
+    "Material UI",
+    "Node.js",
+    "Express",
+    "NestJS",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Redis",
+    "Supabase",
+    "Firebase",
+    "Prisma",
+    "REST API",
+    "GraphQL",
+    "Socket.IO",
+    "Telegram Bot",
+    "Stripe",
+    "Payme",
+    "Click",
+    "Docker",
+    "Nginx",
+    "AWS",
+    "Vercel",
+    "Netlify",
+];
+
 export default function PortfolioModal() {
     const [projects, setProjects] = useState<Project[]>([]);
     const [openModal, setOpenModal] = useState(false);
@@ -30,6 +65,8 @@ export default function PortfolioModal() {
     });
     const [techList, setTechList] = useState<string[]>([]);
     const [techInput, setTechInput] = useState("");
+    const [techFocused, setTechFocused] = useState(false);
+    const [activeTechSuggestionIndex, setActiveTechSuggestionIndex] = useState(0);
     const [file, setFile] = useState<File | null>(null);
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [deleteId, setDeleteId] = useState<number | null>(null);
@@ -76,10 +113,65 @@ export default function PortfolioModal() {
         }
     };
 
-    const handleAddTech = () => {
-        if (techInput.trim()) {
-            setTechList([...techList, techInput.trim()]);
+    const normalizeTech = (value: string) => value.trim().replace(/\s+/g, " ");
+    const handleAddTech = (value?: string) => {
+        const raw = value ?? techInput;
+        const cleaned = normalizeTech(raw);
+        if (!cleaned) return;
+
+        const cleanedLower = cleaned.toLowerCase();
+        if (techList.some((t) => normalizeTech(t).toLowerCase() === cleanedLower)) {
             setTechInput("");
+            return;
+        }
+
+        setTechList((prev) => [...prev, cleaned]);
+        setTechInput("");
+        setActiveTechSuggestionIndex(0);
+    };
+
+    const filteredTechSuggestions = DEFAULT_TECH_SUGGESTIONS.filter((t) => {
+        const q = normalizeTech(techInput).toLowerCase();
+        if (!q) return false;
+        if (!t.toLowerCase().includes(q)) return false;
+        return !techList.some((x) => normalizeTech(x).toLowerCase() === t.toLowerCase());
+    }).slice(0, 8);
+
+    const showTechSuggestions = techFocused && filteredTechSuggestions.length > 0;
+
+    const handleTechKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter" || e.key === "Tab" || e.key === ",") {
+            if (showTechSuggestions && filteredTechSuggestions[activeTechSuggestionIndex]) {
+                e.preventDefault();
+                handleAddTech(filteredTechSuggestions[activeTechSuggestionIndex]);
+                return;
+            }
+            if (normalizeTech(techInput)) {
+                e.preventDefault();
+                handleAddTech();
+            }
+            return;
+        }
+
+        if (!showTechSuggestions) return;
+
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            setActiveTechSuggestionIndex((prev) =>
+                Math.min(prev + 1, filteredTechSuggestions.length - 1)
+            );
+            return;
+        }
+
+        if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setActiveTechSuggestionIndex((prev) => Math.max(prev - 1, 0));
+            return;
+        }
+
+        if (e.key === "Escape") {
+            e.preventDefault();
+            setTechFocused(false);
         }
     };
 
@@ -406,17 +498,48 @@ export default function PortfolioModal() {
                                         <label className="block text-gray-700 mb-1 font-medium">
                                             Technologies
                                         </label>
-                                        <div className="flex gap-2">
-                                            <input
-                                                type="text"
-                                                value={techInput}
-                                                onChange={(e) => setTechInput(e.target.value)}
-                                                placeholder="Add technology (e.g. React, Node.js)"
-                                                className="flex-1 border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none"
-                                            />
+                                        <div className="flex gap-2 relative">
+                                            <div className="flex-1 relative">
+                                                <input
+                                                    type="text"
+                                                    value={techInput}
+                                                    onChange={(e) => {
+                                                        setTechInput(e.target.value);
+                                                        setActiveTechSuggestionIndex(0);
+                                                    }}
+                                                    onKeyDown={handleTechKeyDown}
+                                                    onFocus={() => setTechFocused(true)}
+                                                    onBlur={() => {
+                                                        // allow click on suggestion before closing
+                                                        setTimeout(() => setTechFocused(false), 120);
+                                                    }}
+                                                    placeholder="Add technology (e.g. React, Node.js)"
+                                                    className="w-full border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition rounded-lg px-4 py-2 outline-none"
+                                                />
+
+                                                {showTechSuggestions && (
+                                                    <div className="absolute z-50 mt-1 w-full rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden">
+                                                        {filteredTechSuggestions.map((t, idx) => (
+                                                            <button
+                                                                key={t}
+                                                                type="button"
+                                                                onMouseDown={(ev) => ev.preventDefault()}
+                                                                onClick={() => handleAddTech(t)}
+                                                                className={`w-full text-left px-3 py-2 text-sm transition ${
+                                                                    idx === activeTechSuggestionIndex
+                                                                        ? "bg-blue-50 text-blue-700"
+                                                                        : "hover:bg-gray-50"
+                                                                }`}
+                                                            >
+                                                                {t}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
                                             <button
                                                 type="button"
-                                                onClick={handleAddTech}
+                                                onClick={() => handleAddTech()}
                                                 className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-600 transition"
                                             >
                                                 Add
