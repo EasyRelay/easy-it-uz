@@ -163,7 +163,7 @@ const Contact = () => {
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <div>
+                    <div className='flex flex-col w-64'>
                       <h4 className="font-medium text-gray-900 text-sm">{info.title}</h4>
                       <Link
                         to={info.link}

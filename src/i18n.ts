@@ -24,7 +24,7 @@ const resources = {
         titleLine1: 'Innovative ',
         titleEmphasis: 'IT Solutions',
         titleLine2: 'for Your Business',
-        subtitle: 'We provide cutting-edge IT services, web development, automation, and comprehensive support to help your business thrive in the digital age.',
+        subtitle: 'We provide advanced IT services to help grow your business in the digital era, including website development, mobile applications, Telegram bots, automation, and full support.',
         feature1Title: 'Modern Development',
         feature1Desc: 'Cutting-edge web and mobile applications built with the latest technologies',
         feature2Title: 'Automation & Bots',
@@ -41,7 +41,7 @@ const resources = {
             desc: 'Modern and responsive websites built with cutting-edge technologies for optimal performance and user experience.'
           },
           botDev: {
-            title: 'Bot Development',
+            title: 'Telegram Bot Development',
             desc: 'Custom Telegram, Discord, and specialized bots to automate your business processes and enhance productivity.'
           },
           mobileApps: {
@@ -106,7 +106,7 @@ const resources = {
           email: 'Email',
           phone: 'Phone',
           location: 'Location',
-          city: 'Tashkent, Uzbekistan'
+          city: '118 Samarkand Darvoza Street, Tashkent, Uzbekistan'
         }
       },
       footer: {
@@ -286,7 +286,7 @@ const resources = {
         titleLine1: 'Инновационные ',
         titleEmphasis: 'IT-решения',
         titleLine2: 'для вашего бизнеса',
-        subtitle: 'Мы предоставляем передовые IT‑услуги, веб‑разработку, автоматизацию и комплексную поддержку, чтобы помочь вашему бизнесу развиваться в цифровую эпоху.',
+        subtitle: 'Мы предоставляем передовые IT-услуги для развития вашего бизнеса в цифровую эпоху: разработку веб-сайтов, мобильных приложений, Telegram-ботов, автоматизацию и полную техническую поддержку.',
         feature1Title: 'Современная разработка',
         feature1Desc: 'Передовые веб и мобильные приложения на новейших технологиях',
         feature2Title: 'Автоматизация и боты',
@@ -299,7 +299,7 @@ const resources = {
         subtitle: 'Мы предлагаем комплексные IT‑решения, адаптированные под нужды вашего бизнеса и цифровую трансформацию.',
         items: {
           webDev: { title: 'Веб‑разработка', desc: 'Современные адаптивные сайты на передовых технологиях для лучшего UX и производительности.' },
-          botDev: { title: 'Разработка ботов', desc: 'Кастомные боты для Telegram, Discord и другие для автоматизации процессов.' },
+          botDev: { title: 'Разработка Телеграм Ботов', desc: 'Кастомные боты для Telegram, Discord и другие для автоматизации процессов.' },
           mobileApps: { title: 'Мобильные приложения', desc: 'Кроссплатформенные приложения с отличным UX на iOS и Android.' },
           cloud: { title: 'Облачные решения', desc: 'Масштабируемая облачная инфраструктура и миграция для оптимизации затрат.' },
           consulting: { title: 'IT‑консалтинг', desc: 'Экспертные рекомендации и стратегия для технологических решений вашего бизнеса.' },
@@ -323,7 +323,7 @@ const resources = {
         submit: { sending: 'Отправка...', send: 'Отправить сообщение' },
         whyTitle: 'Почему EasyIT.uz?',
         why: { exp: 'Экспертная команда 6+ лет опыта', support: 'Круглосуточная поддержка', price: 'Конкурентные цены', satisfaction: '100% удовлетворенность клиентов' },
-        info: { email: 'Email', phone: 'Телефон', location: 'Локация', city: 'Ташкент, Узбекистан' }
+        info: { email: 'Email', phone: 'Телефон', location: 'Локация', city: 'Узбекистан, г. Ташкент, улица Самарканд Дарвоза, дом 118, 2 этаж' }
       },
       footer: {
         quickLinks: 'Быстрые ссылки',
@@ -476,10 +476,10 @@ const resources = {
         contactUs: 'Biz bilan bog‘laning'
       },
       hero: {
-        titleLine1: 'Innovatsion ',
-        titleEmphasis: 'IT yechimlar',
-        titleLine2: 'biznesingiz uchun',
-        subtitle: 'Biz raqamli davrda biznesingizni rivojlantirish uchun ilg‘or IT xizmatlari, veb‑ishlab chiqish, avtomatlashtirish va to‘liq qo‘llab‑quvvatlashni taqdim etamiz.',
+        titleLine1: 'Biznesingiz uchun ',
+        titleEmphasis: 'Innovatsion IT ',
+        titleLine2: 'yechimlari',
+        subtitle: 'Biz raqamli davrda biznesingizni rivojlantirish uchun ilg‘or IT xizmatlari, veb saytlar, mobil ilovalar, Telegram botlar, avtomatlashtirish va to‘liq qo‘llab‑quvvatlashni taqdim etamiz.',
         feature1Title: 'Zamonaviy ishlab chiqish',
         feature1Desc: "Eng so‘nggi texnologiyalarda qurilgan veb va mobil ilovalar",
         feature2Title: 'Avtomatlashtirish va botlar',
@@ -491,10 +491,10 @@ const resources = {
         title: 'Xizmatlarimiz',
         subtitle: "Biz biznesingiz ehtiyojlariga moslashtirilgan va raqamli transformatsiyani tezlashtiruvchi kompleks IT yechimlarni taklif qilamiz.",
         items: {
-          webDev: { title: 'Veb‑ishlab chiqish', desc: "Zamonaviy va moslashuvchan saytlar, yuqori unumdorlik va foydalanuvchi tajribasi uchun." },
-          botDev: { title: 'Bot ishlab chiqish', desc: 'Telegram, Discord va boshqa platformalar uchun avtomatlashtirishga yordam beruvchi maxsus botlar.' },
+          webDev: { title: 'Web dasturlar ishlab chiqish', desc: "Zamonaviy va moslashuvchan saytlar, yuqori unumdorlik va foydalanuvchi tajribasi uchun." },
+          botDev: { title: 'Telegram Bot ishlab chiqish', desc: 'Telegram, Discord va boshqa platformalar uchun avtomatlashtirishga yordam beruvchi maxsus botlar.' },
           mobileApps: { title: 'Mobil ilovalar', desc: 'iOS va Android uchun ajoyib tajribaga ega kross‑platforma ilovalar.' },
-          cloud: { title: 'Bulut yechimlari', desc: 'Masshtablanuvchi bulut infratuzilmasi va migratsiya xizmatlari, xarajatlarni optimallashtirish uchun.' },
+          cloud: { title: 'Cloud xizmatlari', desc: 'Masshtablanuvchi bulut infratuzilmasi va migratsiya xizmatlari, xarajatlarni optimallashtirish uchun.' },
           consulting: { title: 'IT konsalting', desc: "To‘g‘ri texnologik qarorlar qabul qilish uchun ekspert maslahat va strategiya." },
           database: { title: 'Ma’lumotlar bazasi boshqaruvi', desc: "Ma’lumotlarni xavfsiz va qulay saqlash uchun samarali dizayn, optimallashtirish va boshqaruv." }
         }
@@ -516,7 +516,7 @@ const resources = {
         submit: { sending: 'Yuborilmoqda...', send: 'Xabarni yuborish' },
         whyTitle: 'Nega EasyIT.uz?',
         why: { exp: "6+ yillik tajribaga ega jamoa", support: '24/7 texnik yordam', price: 'Raqobatbardosh narxlar', satisfaction: "100% mijozlar mamnunligi" },
-        info: { email: 'Email', phone: 'Telefon', location: 'Manzil', city: 'Toshkent, O‘zbekiston' }
+        info: { email: 'Email', phone: 'Telefon', location: 'Manzil', city: 'O‘zbekiston, Toshkent, Samarqand Darvoza ko‘chasi, 118-uy, 2-qavat' }
       },
       footer: {
         quickLinks: 'Tezkor havolalar',
