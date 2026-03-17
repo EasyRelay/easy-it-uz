@@ -3,7 +3,7 @@ import Index from "./pages";
 import ProjectDetail from "./components/ProjectDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import PortfolioModal from "./components/AddPortfolioModal";
+import PortfolioAdminPage from "./features/portfolio/pages/PortfolioAdminPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -20,7 +20,7 @@ function App() {
             <Route path="/portfolio/:id" element={<ProjectDetail />} />
             <Route path="/portfolio/add" element={
               <ProtectedRoute>
-                <PortfolioModal />
+                <PortfolioAdminPage />
               </ProtectedRoute>
             } />
             <Route path="/privacy-policy" element={<PrivacyPolicy></PrivacyPolicy>} />
