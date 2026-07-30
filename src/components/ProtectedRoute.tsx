@@ -13,7 +13,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const ADMIN_PASSWORD = 'easyit2025';
+  const ADMIN_PASSWORD = 'admin0000';
 
   useEffect(() => {
     const savedAuth = localStorage.getItem('portfolio_auth');
